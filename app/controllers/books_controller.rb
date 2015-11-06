@@ -44,6 +44,7 @@ class BooksController < OpenReadController
   end
 
   def set_book
+    #look up books owned by current user
     @book = current_user.books.find(params[:id])
   end
 

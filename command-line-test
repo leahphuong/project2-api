@@ -1,0 +1,15 @@
+curl --include --request POST --header "Content-Type: application/json" -d '{
+  "credentials": {
+    "email": "a@c.a",
+    "password": "abc123",
+    "password_confirmation": "abc123"
+  }
+}' http://localhost:3000/register
+
+
+curl --request POST --header "Content-Type: application/json" -d '{
+  "credentials": {
+    "email": "a@c.a",
+    "password": "abc123"
+  }
+}' http://localhost:3000/login

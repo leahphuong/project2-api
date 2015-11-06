@@ -5,6 +5,7 @@ class OpenReadController < ApplicationController
   skip_before_action :authenticate, only: READ_ACTIONS
 
   # but set current_user if a token is present
+  # (you dont have to log in but if you are, i can tell who you are)
   before_action :set_current_user, only: READ_ACTIONS
   def set_current_user
     # for access to authenticate method

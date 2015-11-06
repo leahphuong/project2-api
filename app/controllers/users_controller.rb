@@ -1,5 +1,6 @@
 #
 class UsersController < ApplicationController
+   #all actions allowed if authenticated
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
