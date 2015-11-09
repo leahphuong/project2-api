@@ -1,4 +1,4 @@
 class Collection < ActiveRecord::Base
-  belongs_to :closet
+  belongs_to :users
   has_many :items
 end

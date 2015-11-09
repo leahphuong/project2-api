@@ -4,7 +4,6 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.string :photo_url
       t.string :description
-      t.decimal :price_paid
 
       t.timestamps null: false
     end
