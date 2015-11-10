@@ -10,9 +10,9 @@ class ItemsController < ApplicationController
   #GET /items/1
   def show
     #show a particular item
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
 
-    render json: @items
+    render json: @item
   end
 
   #POST /items

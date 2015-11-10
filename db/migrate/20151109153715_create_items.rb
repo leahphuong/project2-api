@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.string :photo_url
       t.string :description
+      t.references :collection, index: true, foreign_key: true
 
       t.timestamps null: false
     end
