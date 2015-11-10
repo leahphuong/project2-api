@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   #GET /items
   def index
     #show all iems
-    @items = Item.all
+    @items = Collection.find_by_id(params[:collection_id]).items.all
 
     render json: @items
   end
@@ -10,18 +10,17 @@ class ItemsController < ApplicationController
   #GET /items/1
   def show
     #show a particular item
-    @item = Item.find(params[:id])
+    @item = Collection.find_by_id(params[:collection_id]).items.find(params[:id])
 
     render json: @item
   end
 
   #POST /items
   def create
-    @items = current_user.items.new(item_params)
+    @item = Collection.find_by_id(params[:collection_id]).items.build(item_params)
 
     if @item.save
-      render json: @item, status: :created,
-        location: @item
+      render json: @item, status: :created
     else
       render json: @item.errors, status: :unprocessable_entity
     end
@@ -29,6 +28,7 @@ class ItemsController < ApplicationController
 
   #PATCH /items/1
   def update
+    @item = Collection.find_by_id(params[:collection_id]).items.find(params[:id])
     if @item.update(item_params)
       head :no_content
     else
@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
 
   #DELETE items/1
   def destroy
+    @item = Collection.find_by_id(params[:collection_id]).items.find(params[:id])
     @item.destroy
 
     head :no_content
@@ -46,6 +47,7 @@ class ItemsController < ApplicationController
 
   def set_item
     #look up items owned by current user
+    # @item = Collection.find_by_id(params[:collection_id]).items.find(params[:id])
     @item = current_user.items.find(params[:id])
   end
 
@@ -53,5 +55,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :photo_url, :description)
   end
 
-  private :set_item, :book_params
+  private :set_item, :item_params
 end
