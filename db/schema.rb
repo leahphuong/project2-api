@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109224015) do
+ActiveRecord::Schema.define(version: 20151110174135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20151109224015) do
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "user_profile_id"
+    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
-  add_index "users", ["user_profile_id"], name: "index_users_on_user_profile_id", using: :btree
+  add_index "users", ["user_id"], name: "index_users_on_user_id", using: :btree
 
-  add_foreign_key "users", "user_profiles"
+  add_foreign_key "users", "users"
 end

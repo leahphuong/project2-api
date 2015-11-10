@@ -11,3 +11,4 @@
   User.create!(email: email, password: 'abc123',
                password_confirmation: 'abc123')
 end
+
