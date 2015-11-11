@@ -1,18 +1,18 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = Profile.all
+    @profiles = current_user.profile
 
     render json: @profiles
   end
 
   def show
-    @profile = Profile.find(params[:id])
-
+    @profile = current_user.profile
     render json: @profile
   end
 
   def create
-    @profile = current_user.profiles.new(profile_params)
+    @profile = current_user.profile = Profile.create(profile_params)
+
     if @profile.save
       render json: @profile, status: :created,
         location: @profile
@@ -23,6 +23,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = current_user.profile
     if @profile.update(profile_params)
       head :no_content
     else
@@ -31,6 +32,7 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
+    @profile = current_user.profile
     @profile.destroy
 
     head :no_content
