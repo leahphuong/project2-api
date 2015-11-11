@@ -1,19 +1,19 @@
 class CollectionsController < ApplicationController
   def index
-    @collections = Collection.all
+    @collections = current_user.collections.all
 
     render json: @collections
   end
 
   def show
-    @collection = Collection.find(params[:id])
+    @collection = current_user.collections.find(params[:id])
 
     render json: @collection
 
   end
 
   def create
-    @collection = current_user.collections.new(collection_params)
+    @collection = current_user.collections.build(collection_params)
     if @collection.save
       render json: @collection, status: :created,
       location: @collection
@@ -24,6 +24,7 @@ class CollectionsController < ApplicationController
   end
 
   def update
+    @collection = current_user.collections.find(params[:id])
     if @collection.update(collection_params)
       head :no_content
     else
@@ -32,6 +33,7 @@ class CollectionsController < ApplicationController
   end
 
   def destroy
+    @collection = current_user.collections.find(params[:id])
     @collection.destroy
     head :no_content
   end
