@@ -43,7 +43,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :description)
+    params.require(:collection).permit(:name, :description, :photo_url)
   end
 
   private :set_collection, :collection_params
