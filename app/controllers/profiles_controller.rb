@@ -11,11 +11,11 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = current_user.profile = Profile.create(profile_params)
+    @profile = current_user.create_profile(profile_params)
 
     if @profile.save
-      render json: @profile, status: :created,
-        location: @profile
+      render json: @profile, status: :created
+
     else
       render json: @profile.errors, status: :unprocessable_entity
     end
