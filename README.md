@@ -1,64 +1,24 @@
+<!-- WHAT #CLASSY IS  -->
 
-# User authentication
+#Classy is a virtual closet that allows users to create and manage their closet by adding/removing/update items with name, description and photo link.
 
-## Register
+A user can have a 'closet' with multiple collections.
 
-```
-curl --include --request POST --header "Content-Type: application/json" -d '{
-  "credentials": {
-    "email": "an@example.email",
-    "password": "an example password",
-    "password_confirmation": "an example password"
-  }
-}' http://localhost:3000/register
-```
+<!-- END -->
 
-## Login
+<!-- TECHNOLOGY USED -->
 
-```
-curl --request POST --header "Content-Type: application/json" -d '{
-  "credentials": {
-    "email": "an@example.email",
-    "password": "an example password"
-  }
-}' http://localhost:3000/login
-```
+I used bootstrap template for my front end UI. This was the very first time I incorporated bootstrap to my web app.
 
-## Logout
+<!-- END OF TECHNOLOGY USED -->
 
-```
-curl --request DELETE --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/logout/1
-```
+<!-- BUMPERS ALONG THE RIDE -->
 
-# Users
+I had some difficulties handling bootstrap at first but gradually learnt to work with it.
+I also wanted to add the search feature into my app so my users can search for a specific item but have not had time to get it done.
 
-## List
+<!-- END -->
 
-```
-curl --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/users
-```
+<!-- LINK TO FRONTEND REPO  -->
 
-# Books
-
-## List
-
-```
-curl --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/users
-```
-
-**OR**
-
-```
-curl http://localhost:3000/users
-```
-
-## Create
-
-```
-curl --request POST --header "Authorization: Token token=be249dc0231396806f24c953cafae03a" --header "Content-Type: application/json" -d '{
-  "book": {
-    "title":"The Hold",
-    "isbn":"abc123def456"
-  }
-}'  http://localhost:3000/books
-```
+https://github.com/leahphuong/project2-frontend
